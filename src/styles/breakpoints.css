@@ -1,0 +1,174 @@
+/* Responsive Breakpoint System */
+:root {
+  /* Breakpoint values */
+  --mobile: 320px;
+  --tablet: 768px;
+  --desktop: 1024px;
+  --large-desktop: 1440px;
+  
+  /* Layout spacing */
+  --sidebar-width: 240px;
+  --sidebar-width-collapsed: 60px;
+  --header-height: 64px;
+  
+  /* Z-index layers */
+  --z-sidebar: 100;
+  --z-header: 200;
+  --z-modal: 1000;
+  --z-tooltip: 1100;
+  
+  /* Responsive spacing */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-xxl: 3rem;
+}
+
+/* Media Query Mixins as CSS Custom Properties */
+@media (min-width: 768px) {
+  :root {
+    --is-tablet-up: 1;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --is-desktop-up: 1;
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --is-large-desktop-up: 1;
+  }
+}
+
+/* Utility Classes for Responsive Design */
+.container {
+  width: 100%;
+  max-width: var(--large-desktop);
+  margin: 0 auto;
+  padding: 0 var(--spacing-md);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 var(--spacing-lg);
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 var(--spacing-xl);
+  }
+}
+
+/* Responsive Grid System */
+.grid {
+  display: grid;
+  gap: var(--spacing-md);
+}
+
+.grid-cols-1 {
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 768px) {
+  .grid-cols-2-tablet {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-cols-3-tablet {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid-cols-2-desktop {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-cols-3-desktop {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .grid-cols-4-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Responsive Visibility */
+.mobile-only {
+  display: block;
+}
+
+.tablet-up {
+  display: none;
+}
+
+.desktop-up {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .mobile-only {
+    display: none;
+  }
+  
+  .tablet-up {
+    display: block;
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktop-up {
+    display: block;
+  }
+}
+
+/* Responsive Text Sizes */
+.text-sm {
+  font-size: 0.875rem;
+}
+
+.text-base {
+  font-size: 1rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+}
+
+.text-2xl {
+  font-size: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .text-lg {
+    font-size: 1.25rem;
+  }
+  
+  .text-xl {
+    font-size: 1.5rem;
+  }
+  
+  .text-2xl {
+    font-size: 1.875rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .text-xl {
+    font-size: 1.75rem;
+  }
+  
+  .text-2xl {
+    font-size: 2.25rem;
+  }
+}

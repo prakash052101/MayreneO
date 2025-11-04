@@ -1,0 +1,105 @@
+.virtualized-list {
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  width: 100%;
+}
+
+.virtualized-list__spacer {
+  position: relative;
+  width: 100%;
+}
+
+.virtualized-list__content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  will-change: transform;
+}
+
+.virtualized-list__item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Smooth scrolling for better UX */
+.virtualized-list {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar styling */
+.virtualized-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.virtualized-list::-webkit-scrollbar-track {
+  background: var(--surface-color, #181818);
+}
+
+.virtualized-list::-webkit-scrollbar-thumb {
+  background: var(--border-color, #333333);
+  border-radius: 4px;
+}
+
+.virtualized-list::-webkit-scrollbar-thumb:hover {
+  background: var(--border-hover, #535353);
+}
+
+/* Focus management for accessibility */
+.virtualized-list:focus {
+  outline: 2px solid var(--focus-color, #1db954);
+  outline-offset: -2px;
+}
+
+/* Loading state */
+.virtualized-list--loading {
+  pointer-events: none;
+}
+
+.virtualized-list--loading .virtualized-list__item {
+  opacity: 0.6;
+}
+
+/* Empty state */
+.virtualized-list--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary, #b3b3b3);
+  font-size: 0.875rem;
+}
+
+/* Performance optimizations */
+.virtualized-list__content {
+  contain: layout style paint;
+}
+
+.virtualized-list__item {
+  contain: layout style paint;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .virtualized-list {
+    scroll-behavior: auto;
+  }
+  
+  .virtualized-list__content {
+    transition: none;
+  }
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .virtualized-list::-webkit-scrollbar {
+    width: 4px;
+  }
+  
+  /* Touch scrolling optimization */
+  .virtualized-list {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+}

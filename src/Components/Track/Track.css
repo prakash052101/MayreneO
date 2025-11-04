@@ -1,37 +1,192 @@
-.Track{
+.Track {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid rgba(256, 256, 256, 0.98);
+    justify-content: space-between;
+    padding: var(--spacing-md);
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color var(--transition-fast);
+    border-radius: var(--border-radius-sm);
+    margin-bottom: var(--spacing-xs);
 }
 
-.Track-action{
-    cursor: pointer;
-    padding: 0.5rem;
-    font-size: 1.05rem;
-    transition: color 0.25s;
-    border: 0px;
-    background-color: rgba(0, 0, 0, 0);
-    color: #fff;  
+.Track:hover {
+    background-color: rgba(255, 255, 255, 0.05);
 }
 
-.Track-action:hover{
-    color: rgba(265, 265, 265, 0.5)
+.Track--current {
+    background-color: rgba(29, 185, 84, 0.1);
+    border-color: var(--accent-color);
 }
 
-.Track-information{
-    float: grow;
+.Track-information {
+    flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: 180px;
+    min-width: 0;
 }
 
-.Track-information h3{
-    margin-bottom: 0.22rem;
+.Track-information h3 {
+    margin: 0 0 var(--spacing-xs) 0;
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.Track-information p{
-    font-size: 0.83rem;
+.Track--current .Track-information h3 {
+    color: var(--accent-color);
+}
+
+.Track-information p {
+    margin: 0;
+    font-size: var(--font-size-sm);
     font-weight: 300;
-    color: rgba(256, 256, 256, 0.8);
+    color: var(--text-secondary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.Track-no-preview {
+    font-style: italic;
+    color: var(--text-muted) !important;
+}
+
+.Track-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-shrink: 0;
+}
+
+.Track-action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    padding: 0;
+    border: none;
+    border-radius: var(--border-radius-full);
+    background-color: transparent;
+    color: var(--text-secondary);
+    transition: all var(--transition-fast);
+}
+
+.Track-action:hover {
+    color: var(--text-primary);
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: scale(1.1);
+}
+
+.Track-action:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+}
+
+.Track-action--play {
+    background-color: var(--accent-color);
+    color: var(--text-primary);
+}
+
+.Track-action--play:hover {
+    background-color: var(--accent-hover);
+    color: var(--text-primary);
+}
+
+.Track-action--current {
+    background-color: var(--accent-color);
+}
+
+.Track-action--add:hover {
+    color: var(--accent-color);
+}
+
+.Track-action--remove:hover {
+    color: var(--error-color);
+}
+
+.Track-action svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .Track {
+        padding: var(--spacing-sm);
+    }
+    
+    .Track-information h3 {
+        font-size: var(--font-size-sm);
+    }
+    
+    .Track-information p {
+        font-size: var(--font-size-xs);
+    }
+    
+    .Track-action {
+        width: 28px;
+        height: 28px;
+    }
+    
+    .Track-action svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .Track {
+        padding: var(--spacing-xs) var(--spacing-sm);
+    }
+    
+    .Track-actions {
+        gap: var(--spacing-xs);
+    }
+}/* 
+Playable track styles */
+.Track--playable {
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.Track--playable:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.Track--playable:active {
+  transform: translateY(0);
+}
+
+/* Demo audio indicator */
+.Track-no-preview {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  font-style: italic;
+  margin-top: var(--spacing-xs);
+}/* No pr
+eview play button */
+.Track-action--no-preview {
+  opacity: 0.6;
+  background-color: var(--text-secondary);
+}
+
+.Track-action--no-preview:hover {
+  opacity: 0.8;
+  background-color: var(--text-primary);
+}
+
+/* Updated no preview message */
+.Track-no-preview {
+  font-size: var(--font-size-xs);
+  color: var(--text-tertiary);
+  margin-top: var(--spacing-xs);
+  line-height: 1.3;
 }
