@@ -19,9 +19,7 @@ const SearchBar = ({
   const dropdownRef = useRef(null);
   
   const { 
-    query,
     history, 
-    results,
     hasResults,
     setQuery, 
     addToHistory,
@@ -35,7 +33,7 @@ const SearchBar = ({
     if (initialValue !== inputValue) {
       setInputValue(initialValue);
     }
-  }, [initialValue]);
+  }, [initialValue, inputValue]);
 
   // Memoize the suggestion generation to avoid dependency issues
   const generateSuggestions = useCallback(() => {
