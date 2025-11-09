@@ -313,7 +313,7 @@
 
 .audio-visualizer {
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   gap: 2px;
   height: 20px;
 }
